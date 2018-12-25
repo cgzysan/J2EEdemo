@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- 练习： 给字符串对象添加一个toCharArray的方法，然后再添加一个reverse(翻转)的 方法 -->
+        <script type="text/javascript">
+            String.prototype.toCharArray = function() {
+                var arr = new Array();
+                for (var i = 0; i < this.length; i++) {
+                    arr[i] = this.charAt(i);
+                }
+                return arr;
+            }
+
+            String.prototype.reverse = function() {
+                var arr = this.toCharArray();
+                arr.reverse();
+                return arr.join("");
+            }
+
+            var str = "字符串常用方法";
+            var res = str.toCharArray();
+            document.write("数组的元素：" + res.join(",") + "<br/>");
+            res = str.reverse();
+            document.write("翻转过后：" + res);
+
+        </script>
+        <meta charset="UTF-8">
+        <title>prototype练习</title>
+    </head>
+
+    <body>
+    </body>
+
+</html>
