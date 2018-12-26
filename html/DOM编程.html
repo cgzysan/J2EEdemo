@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript">
+        /*
+  DOM(Document Object Model) 文档对象模型
+
+	一个html页面被浏览器加载的时候，浏览器就会对整个html页面上的所有标签都会创建一个对应的
+	对象进行描述，我在浏览器上看到的信息只不过就是这些html对象的属性信息而已。我们只要能找到
+	对应的对象操作对象的属性，则可以改变浏览器当前显示的内容。
+
+	var allNodes = document.all;   //获取html文件中的所有标签节点 。
+	for(var i = 0; i<allNodes.length ; i++){
+		alert(allNodes[i].nodeName);	 //标签的名字  nodeName;
+	}
+
+	通过html元素的标签属性找节点。
+	document.getElementById("html元素的id")
+	document.getElementsByTagName("标签名")
+	document.getElementsByName("html元素的name")
+
+	通过关系(父子关系、兄弟关系)找标签。
+	parentNode	获取当前元素的父节点。
+	childNodes	获取当前元素的所有下一级子元素。
+	firstChild	获取当前节点的第一个子节点。
+	lastChild	获取当前节点的最后一个子节点。
+------------------------------------------------------------
+	nextSibling		获取当前节点的下一个节点。（兄节点）
+	previousSibling	获取当前节点的上一个节点。（弟节点）
+
+我们可以通过标签的类型进行判断筛选：
+
+	文本节点的类型： 3
+	注释的节点类型： 8
+	标签节点的类型： 1
+
+*/
+
+    </script>
+    <meta charset="UTF-8">
+    <title>DOM编程</title>
+</head>
+
+<body>
+</body>
+
+</html>
