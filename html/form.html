@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript">
+        function checkName() {
+            var inputName = document.getElementById("userName").value;
+            var spanNode = document.getElementById("userId");
+
+            var reg = /^[a-z]\w{5,}$/i;
+            if (reg.test(inputName)) {
+                spanNode.innerHTML = "正确".fontcolor("green");
+                return true;
+            } else {
+                spanNode.innerHTML = "错误".fontcolor("red");
+                return false;
+            }
+        }
+
+        function checkPass() {
+            var inputPass = document.getElementById("pwd").value;
+            var spanNode = document.getElementById("passId");
+
+            var reg = /^\w{8,}$/i;
+            if (reg.test(inputPass)) {
+                spanNode.innerHTML = "正确".fontcolor("green");
+                return true;
+            } else {
+                spanNode.innerHTML = "错误".fontcolor("red");
+                return false;
+            }
+        }
+
+        function ensurePass() {
+            var inputPass = document.getElementById("pwd").value;
+            var ensurePass = document.getElementById("ensurepwd").value;
+            var spanNode = document.getElementById("ensureId");
+            if (inputPass == ensurePass) {
+                spanNode.innerHTML = "正确".fontcolor("green");
+                return true;
+            } else {
+                spanNode.innerHTML = "错误".fontcolor("red");
+                return false;
+            }
+        }
+
+        function checkEmail() {
+            var email = document.getElementById("email").value;
+            var spanNode = document.getElementById("emaiId");
+
+            var reg = /^[a-z0-9]\w+@[a-z0-9]+(\.[a-z]{2,3}){1,2}$/i;
+            if (reg.test(email)) {
+                //符合规则
+                spanNode.innerHTML = "正确".fontcolor("green");
+                return true;
+            } else {
+                //不符合规则
+                spanNode.innerHTML = "错误".fontcolor("red");
+                return false;
+            }
+        }
+
+        function checkAll() {
+            var name = checkName();
+            var pass = checkPass();
+            var ensure = ensurePass();
+            var mail = checkEmail();
+
+            if (name && pass && ensure && mail) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+    </script>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="success.html" method="get" onsubmit="return checkAll()">
+        <table border="1px" width="50%" align="center" cellspacing="0px" cellpadding="3px">
+            <tr>
+                <td width="25%">姓名：</td>
+                <td>
+                    <input type="text" name="userName" id="userName" onblur="checkName()">
+                    <span id="userId"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td>
+                    <input type="password" name="pwd" id="pwd" onblur="checkPass()">
+                    <span id="passId"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>确定密码：</td>
+                <td>
+                    <input type="password" name="ensurepwd" id="ensurepwd" onblur="ensurePass()">
+                    <span id="ensureId"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>邮箱：</td>
+                <td>
+                    <input type="text" name="email" id="email" onblur="checkEmail()">
+                    <span id="emaiId"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>性别：</td>
+                <td>
+                    <input type="radio" name="gender" checked="true" id="male" value="male"> 男
+                    <input type="radio" name="gender" value="female"> 女
+                </td>
+            </tr>
+            <tr>
+                <td>爱好：</td>
+                <td>
+                    <input type="checkbox" name="habit"> eat
+                    <input type="checkbox" name="habit"> sleep
+                    <input type="checkbox" name="habit"> play
+                </td>
+            </tr>
+            <tr>
+                <td>城市：</td>
+                <td>
+                    <select name="city" id="city">
+                        <option>请选择</option>
+                        <option>北京</option>
+                        <option>上海</option>
+                        <option>广州</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>自我介绍：</td>
+                <td>
+                    <textarea cols="15" rows="5" name="myInfo" id="myInfo"></textarea>
+                </td>
+            </tr>
+            <tr align="center">
+                <td colspan="2">
+                    <input type="submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

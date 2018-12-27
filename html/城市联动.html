@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript">
+        function showCity() {
+            //维护一个二维数组存储省份对应的城市
+            var citys = [
+                [],
+                ["广州", "深圳", "湛江", "东莞"],
+                ["长沙", "岳阳", "郴州", "衡阳"],
+                ["武汉", "襄阳", "黄冈", "荆门"]
+            ];
+            var provinceNode = document.getElementById("province");
+            var selectIndex = provinceNode.selectedIndex;
+            var cityData = citys[selectIndex];
+
+            var cityNode = document.getElementById("city");
+            /*
+            //先清空city框所有option
+            var children = cityNode.childNodes;
+            for(var i = 0; i<children.length ; ){
+            	cityNode.removeChild(children[i]);
+            }
+            */
+
+            //设置options的个数。
+            cityNode.options.length = 1;
+
+            for (var index = 0; index < cityData.length; index++) {
+                var optionNode = document.createElement("option");
+                optionNode.innerHTML = cityData[index];
+                cityNode.appendChild(optionNode);
+            }
+        }
+
+    </script>
+    <meta charset="UTF-8">
+    <title>城市联动</title>
+</head>
+
+<body>
+    省份 <select id="province" onchange="showCity()">
+        <option>省份</option>
+        <option>广东</option>
+        <option>湖南</option>
+        <option>湖北</option>
+    </select>
+    城市 <select id="city">
+        <option>城市</option>
+    </select>
+</body>
+
+</html>

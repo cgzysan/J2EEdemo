@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript">
+        function createCode() {
+            var datas = ['R', 'T', 'I', 'B', '凡', 'C', 'D', 'L']; // 0-7  长度8
+            var code = "";
+            for (var i = 0; i < 4; i++) {
+                var index = Math.floor(Math.random() * datas.length);
+                code += datas[index];
+            }
+            var spanNode = document.getElementById("code");
+            spanNode.innerHTML = code;
+            spanNode.style.color = "red";
+            spanNode.style.fontSize = "30px";
+            spanNode.style.textDecoration = "underline";
+
+        }
+
+        function ready() {
+            createCode();
+        }
+
+    </script>
+    <meta charset="UTF-8">
+    <title>操作CSS样式</title>
+</head>
+
+<body onload="ready()">
+    <span id="code"></span><a href="#" onclick="createCode()">看不清，换一个</a>
+</body>
+
+</html>

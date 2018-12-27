@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript">
+        function loadYearAndMonth() {
+            var yearNode = document.getElementById("year");
+            var startY = 1900;
+            var endY = new Date().getFullYear();
+            for (var i = startY; i <= endY; i++) {
+                var option = document.createElement("option");
+                option.innerHTML = i;
+                yearNode.appendChild(option);
+            }
+
+            var monthNode = document.getElementById("month");
+            for (var j = 1; j <= 12; j++) {
+                var monthOp = document.createElement("option");
+                monthOp.innerHTML = j;
+                monthNode.appendChild(monthOp);
+            }
+        }
+
+        function showDay() {
+            // 找到year节点
+            var yearNode = document.getElementById("year");
+            // 计算当前选中年份
+            var curSelctY = 1900 + yearNode.selectedIndex - 1;
+            var monthNode = document.getElementById("month");
+            var dayNode = document.getElementById("day");
+            var dayNum = 0;
+            switch (monthNode.selectedIndex) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    dayNum = 31;
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    dayNum = 30;
+                    break;
+                case 2:
+                    if ((curSelctY % 4 == 0 && curSelctY % 100 != 0) || (curSelctY % 400 == 0)) {
+                        dayNum = 29;
+                    } else {
+                        dayNum = 28;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            for (var i = 1; i <= dayNum; i++) {
+                var dayOp = document.createElement("option");
+                dayOp.innerHTML = i;
+                dayNode.appendChild(dayOp);
+            }
+        }
+
+    </script>
+    <meta charset="UTF-8">
+    <title>时间联动</title>
+</head>
+
+<body onload="loadYearAndMonth()">
+    年 <select id="year" onchange="showDay()">
+        <option>年份</option>
+    </select>
+    月 <select id="month" onchange="showDay()">
+        <option>月份</option>
+    </select>
+    日 <select id="day">
+        <option>日期</option>
+    </select>
+</body>
+
+</html>
