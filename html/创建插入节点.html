@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript">
+    var num = 1;
+
+    function add() {
+        var inputNode = document.createElement("input");
+        inputNode.setAttribute("type", "button");
+        inputNode.setAttribute("value", "按钮" + num);
+        num++;
+
+        var bodyNode = document.getElementsByTagName("body")[0];
+        bodyNode.appendChild(inputNode);
+    }
+    </script>
+    <meta charset="UTF-8">
+    <title>创建节点</title>
+</head>
+
+<body>
+    <input type="button" name="" value="添加" onclick="add()">
+</body>
+
+</html>
