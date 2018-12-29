@@ -3,7 +3,7 @@
 
 <head>
     <script type="text/javascript">
-        /*
+    /*
 javascript组成部分：
 	EMCAScript（基本语法）
 	BOM( Browser Object MOdel) 浏览器对象模型.
@@ -28,10 +28,11 @@ window对象常用的方法：
 注意： 使用window对象的任何属性与方法都可以省略window对象不写的。
 
 */
-        function showAd() {
-            open("ad.html", "_blank", "height=400px,width=400px,toolbar=no,location=no,top=200px")
-        }
+    function showAd() {
+        open("ad.html", "_blank", "height=400px,width=400px,toolbar=no,location=no,top=200px")
+    }
 
+    setTimeout("showAd()", 3000);
     </script>
     <meta charset="UTF-8">
     <title>window对象</title>
