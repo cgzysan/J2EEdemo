@@ -15,101 +15,100 @@ import org.dom4j.io.XMLWriter;
 import org.junit.Test;
 
 /**
- * 1.Ê¹ÓÃdom4jµÄapiÀ´Éú³ÉÒÔÏÂµÄxmlÎÄ¼ş
+ *  è¯¾å ‚ç»ƒä¹ ï¼š 
+ * 1.ä½¿ç”¨dom4jçš„apiæ¥ç”Ÿæˆä»¥ä¸‹çš„xmlæ–‡ä»¶
 <Students>
 <Student id="1">
-	<name>ÕÅÈı</name>
-	<gender>ÄĞ</gender>
-	<grade>¼ÆËã»ú1°à</grade>
-	<address>¹ãÖİÌìºÓ</address>
+	<name>å¼ ä¸‰</name>
+	<gender>ç”·</gender>
+	<grade>è®¡ç®—æœº1ç­</grade>
+	<address>å¹¿å·å¤©æ²³</address>
 </Student>
 <Student id="2">
-	<name>ÀîËÄ</name>
-	<gender>Å®</gender>
-	<grade>¼ÆËã»ú2°à</grade>
-	<address>¹ãÖİÔ½Ğã</address>
+	<name>æå››</name>
+	<gender>å¥³</gender>
+	<grade>è®¡ç®—æœº2ç­</grade>
+	<address>å¹¿å·è¶Šç§€</address>
 </Student>
 </Students>
 
-2.ĞŞ¸ÄidÎª2µÄÑ§ÉúµÄĞÕÃû£¬¸ÄÎª¡°ÍõÀö¡±
+2.ä¿®æ”¹idä¸º2çš„å­¦ç”Ÿçš„å§“åï¼Œæ”¹ä¸ºâ€œç‹ä¸½â€
 
-3.É¾³ıidÎª2µÄÑ§Éú
+3.åˆ é™¤idä¸º2çš„å­¦ç”Ÿ
  * @author APPle
  *
  */
 
-public class Demo4 {
-	
+public class DocDemo {
+
 	@Test
 	public void test1() throws Exception {
 		Document doc = DocumentHelper.createDocument();
 		Element rootElem = doc.addElement("Students");
-		
+
 		Element studentElem1 = rootElem.addElement("Student");
 		studentElem1.addAttribute("id", "1");
-		studentElem1.addElement("name").setText("ÕÅÈı");
-		studentElem1.addElement("gender").setText("ÄĞ");
-		studentElem1.addElement("grade").setText("¼ÆËã»ú2°à");
-		studentElem1.addElement("address").setText("¹ãÖİÌìºÓ");
-		
+		studentElem1.addElement("name").setText("å¼ ä¸‰");
+		studentElem1.addElement("gender").setText("ç”·");
+		studentElem1.addElement("grade").setText("è®¡ç®—æœº1ç­");
+		studentElem1.addElement("address").setText("å¹¿å·å¤©æ²³");
+
 		Element studentElem2 = rootElem.addElement("Student");
 		studentElem2.addAttribute("id", "2");
-		studentElem2.addElement("name").setText("ÀîËÄ");
-		studentElem2.addElement("gender").setText("Å®");
-		studentElem2.addElement("grade").setText("¼ÆËã»ú1°à");
-		studentElem2.addElement("address").setText("¹ãÖİÔ½Ğã");
-		
-		//3.ÄÚÈİĞ´³öµ½xmlÎÄ¼ş
-		//3.1 Êä³öÎ»ÖÃ
+		studentElem2.addElement("name").setText("æå››");
+		studentElem2.addElement("gender").setText("å¥³");
+		studentElem2.addElement("grade").setText("è®¡ç®—æœº2ç­");
+		studentElem2.addElement("address").setText("å¹¿å·è¶Šç§€");
+
+		// 3.å†…å®¹å†™å‡ºåˆ°xmlæ–‡ä»¶
+		// 3.1 è¾“å‡ºä½ç½®
 		FileOutputStream out = new FileOutputStream("e:/student.xml");
-		//3.2 Ö¸¶¨¸ñÊ½
+		//3.2 æŒ‡å®šæ ¼å¼
 		OutputFormat format = OutputFormat.createPrettyPrint();
-		// ÉèÖÃ±àÂë
+		// è®¾ç½®ç¼–ç 
 		format.setEncoding("utf-8");
 		XMLWriter writer = new XMLWriter(out, format);
-		//3.3 Ğ´³öÄÚÈİ
+		//3.3 å†™å‡ºå†…å®¹
 		writer.write(doc);
-		//3.4¹Ø±Õ×ÊÔ´
+		//3.4å…³é—­èµ„æº
 		writer.close();
 	}
-	
+
 	/**
-	 * 2.ĞŞ¸ÄidÎª2µÄÑ§ÉúĞÕÃû
-	 * @throws Exception 
+	 * 2.ä¿®æ”¹idä¸º2çš„å­¦ç”Ÿå§“å
 	 * @throws Exception
 	 */
 	@Test
 	public void test2() throws Exception {
-		//1.²éÑ¯µ½idÎª2µÄÑ§Éú
+		//1.æŸ¥è¯¢åˆ°idä¸º2çš„å­¦ç”Ÿ
 		Document doc = new SAXReader().read(new File("e:/student.xml"));
-		//1.1 ÕÒµ½ËùÓĞµÄStudent±êÇ©
+		//1.1 æ‰¾åˆ°æ‰€æœ‰çš„Studentæ ‡ç­¾
 		Iterator<Element> it = doc.getRootElement().elementIterator();
 		while (it.hasNext()) {
 			Element elem = it.next();
-			//1.2 ²éÑ¯idÎªidµÄÑ§Éú±êÇ©
+			//1.2 æŸ¥è¯¢idä¸ºidçš„å­¦ç”Ÿæ ‡ç­¾
 			if (elem.attributeValue("id").equals("2")) {
-				elem.element("name").setText("ÍõÀö");
+				elem.element("name").setText("ç‹ä¸½");
 				break;
 			}
 		}
-		
-		//3.ÄÚÈİĞ´³öµ½xmlÎÄ¼ş
-		//3.1 Êä³öÎ»ÖÃ
+
+		// 3.å†…å®¹å†™å‡ºåˆ°xmlæ–‡ä»¶
+		// 3.1 è¾“å‡ºä½ç½®
 		FileOutputStream out = new FileOutputStream("e:/student.xml");
-		//3.2 Ö¸¶¨¸ñÊ½
+		//3.2 æŒ‡å®šæ ¼å¼
 		OutputFormat format = OutputFormat.createPrettyPrint();
-		// ÉèÖÃ±àÂë
+		// è®¾ç½®ç¼–ç 
 		format.setEncoding("utf-8");
 		XMLWriter writer = new XMLWriter(out, format);
-		//3.3 Ğ´³öÄÚÈİ
+		//3.3 å†™å‡ºå†…å®¹
 		writer.write(doc);
-		//3.4¹Ø±Õ×ÊÔ´
+		//3.4å…³é—­èµ„æº
 		writer.close();
 	}
-	
+
 	/**
-	 * 3.É¾³ıidÎª2µÄÑ§Éú
-	 * @throws Exception 
+	 * 3.åˆ é™¤idä¸º2çš„å­¦ç”Ÿ
 	 * @throws Exception
 	 */
 	@Test
@@ -123,18 +122,18 @@ public class Demo4 {
 				break;
 			}
 		}
-		
-		//3.ÄÚÈİĞ´³öµ½xmlÎÄ¼ş
-		//3.1 Êä³öÎ»ÖÃ
+
+		// 3.å†…å®¹å†™å‡ºåˆ°xmlæ–‡ä»¶
+		// 3.1 è¾“å‡ºä½ç½®
 		FileOutputStream out = new FileOutputStream("e:/student.xml");
-		//3.2 Ö¸¶¨¸ñÊ½
+		//3.2 æŒ‡å®šæ ¼å¼
 		OutputFormat format = OutputFormat.createPrettyPrint();
-		// ÉèÖÃ±àÂë
+		// è®¾ç½®ç¼–ç 
 		format.setEncoding("utf-8");
 		XMLWriter writer = new XMLWriter(out, format);
-		//3.3 Ğ´³öÄÚÈİ
+		//3.3 å†™å‡ºå†…å®¹
 		writer.write(doc);
-		//3.4¹Ø±Õ×ÊÔ´
+		//3.4å…³é—­èµ„æº
 		writer.close();
 	}
 }
