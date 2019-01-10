@@ -1,6 +1,7 @@
 package ysan.contact;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,13 +15,17 @@ public class ContactOperatorImp implements ContactOperator{
 	@Override
 	public void addContact(Contact contact) {
 		try {
-			File file = new File("~/Users/ysan/Documents/contact.xml");
+			String home = System.getProperty("user.home");
+			String path = home + File.separator + "Documents" + File.separator + "contact.xml";
+			File file = new File(path);
 			Document doc = null;
 			Element rootElem = null;
 			if (!file.exists()) {
+				System.out.println("文件不存在， 创建");
 				doc = DocumentHelper.createDocument();
-				doc.getRootElement();
+				rootElem = doc.addElement("contactList");
 			} else {
+				System.out.println("文件存在");
 				doc = XMLUtil.getDocument();
 				rootElem = doc.getRootElement();
 			}
