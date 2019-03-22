@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  	<!-- 引入struts核心过滤器 -->
+  	<!-- 配置Struts 2框架的核心Filter -->
+	<filter>
+		<!--过滤器名 -->
+		<filter-name>struts2</filter-name>
+		<!--  配置Struts 2.3.4的核心Filter的实现类  -->
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<!--  让Struts 2的核心Filter拦截所有请求  -->
+	<filter-mapping>
+		<!--过滤器名 -->
+		<filter-name>struts2</filter-name>
+		<!-- 匹配所有请求 -->
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!--欢迎页面列表 -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

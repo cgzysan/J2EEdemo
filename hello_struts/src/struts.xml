@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 
+		package   定义一个包。 包作用，管理action。
+				   (通常,一个业务模板用一个包)
+		   name  包的名字； 包名不能重复；
+		   extends 当前包继承自哪个包
+		   		   在struts中，包一定要继承struts-default
+		   		  struts-default在struts-default.xml中定的包
+		   abstract  
+		   		  表示当前包为抽象包； 抽象包中不能有action的定义，否则运行时期报错
+		   		 abstract=true  只有当当前的包被其他包继承时候才用！
+		   		 如：
+		   		 	<package name="basePackage" extends="struts-default" abstract="true"></package>
+   					<package name="user" extends="basePackage">
+   		   namespace   名称空间，默认为"/"
+   		   				作为路径的一部分
+   		   			   访问路径=  http://localhost:8080/项目/名称空间/ActionName
+   		   
+   		   
+		  
+		action   配置请求路径与Action类的映射关系
+		  	   name  请求路径名称
+		  	   class 请求处理的aciton类的全名
+		  	   method 请求处理方法		
+		result
+		  	   name  action处理方法返回值 
+		  	   type  跳转的结果类型
+		  	     标签体中指定跳转的页面
+		   		 
+	 -->
+	<package name="xxxx" extends="struts-default">
+		<action name="hello"
+			class="ysan.struts.action.hello.HelloAction" method="execute">
+			<result name="success">/success.jsp</result>
+		</action>
+		<action name="login"
+			class="ysan.struts.action.login.LoginAction" method="login">
+			<result name="login">/index.jsp</result>
+		</action>
+	</package>
+</struts>
